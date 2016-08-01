@@ -1,5 +1,5 @@
 //
-//  YYAppDelegate.h
+//  AppDelegate.h
 //  PublishMoments-demo
 //
 //  Created by Arvin on 16/8/1.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YYAppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
