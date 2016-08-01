@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  YYNavigationController.h
 //  PublishMoments-demo
 //
 //  Created by Arvin on 16/8/1.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface YYNavigationController : UINavigationController
 
 @end
-
