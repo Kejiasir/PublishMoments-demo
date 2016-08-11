@@ -15,7 +15,7 @@
 @implementation YYNavigationController
 
 + (void)initialize {
-    NSLog(@"------");
+    NSLog(@"-------");
     [self setupNavBarTheme];
 }
 
@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     //[self setupNavBarTheme];
     [self preferredStatusBarStyle];
-    NSLog(@"===========");
+    NSLog(@"++++++++");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,19 +38,21 @@
 
 + (void)setupNavBarTheme {
     
+    //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     UINavigationBar *navBar = [UINavigationBar appearance];
-//    [navBar setBarTintColor:ColorFromRGB(45, 46, 50)];
-    [navBar setTranslucent:YES];
-//    [navBar setTitleTextAttributes:@{NSFontAttributeName:CustomFontName(18),
-//                                     NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [navBar setBarTintColor:[UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1]];
+    //[navBar setTranslucent:YES];
+    [navBar setTintColor:[UIColor whiteColor]];
+    [navBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],
+                                     NSForegroundColorAttributeName:[UIColor whiteColor]}];
     /*
      UIBarStyleDefault          = 0,
      UIBarStyleBlack            = 1,
      UIBarStyleBlackOpaque      = 1,//已过时, 使用UIBarStyleBlack
      UIBarStyleBlackTranslucent = 2,//已过时, 使用UIBarStyleBlack和设置半透明的属性为YES
      */
-    [navBar setBarStyle:UIBarStyleBlack];
-    [navBar setBackgroundColor:[UIColor blackColor]];
+    //[navBar setBarStyle:UIBarStyleDefault];
+    //[navBar setBackgroundColor:ColorFromRGB(47, 53, 53)];
 }
 
 

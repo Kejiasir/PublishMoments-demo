@@ -212,8 +212,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if(section == 0 && self.titleText) {
         return ACTION_SHEET_BTN_HEIGHT;
-    }
-    if(section == 1 && self.cancelText) {
+    } else if(section == 1 && self.cancelText) {
         return 10.0f;
     }
     return 0.0f;
@@ -269,8 +268,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0) {
         return self.otherButtons.count;
-    }
-    if(section == 1 && self.cancelText) {
+    } else if(section == 1 && self.cancelText) {
         return 1;
     }
     return 0;
@@ -298,8 +296,7 @@
     
     if(indexPath.section == 0) {
         [cell.textLabel setText:self.otherButtons[indexPath.row]];
-    }
-    if(indexPath.section == 1){
+    } else if(indexPath.section == 1){
         [cell.textLabel setText:self.cancelText];
     }
     return cell;

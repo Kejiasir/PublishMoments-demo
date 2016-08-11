@@ -5,7 +5,7 @@ target 'PublishMoments-demo' do
     use_frameworks!
     
     # Pods for PublishMoments-demo
-    # 在这里配置项目要用到的第三方依赖库
+    pod 'SDWebImage', '~> 3.8.1'
     
     target 'PublishMoments-demoTests' do
         inherit! :search_paths

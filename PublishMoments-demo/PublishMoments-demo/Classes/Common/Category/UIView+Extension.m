@@ -71,4 +71,28 @@
     return self.center.y;
 }
 
+- (void)showMessageWithText:(NSString *)text {
+    UILabel *alertLabel = [[UILabel alloc] init];
+    alertLabel.font = [UIFont systemFontOfSize:15];
+    alertLabel.text = text;
+    alertLabel.textAlignment = NSTextAlignmentCenter;
+    alertLabel.layer.masksToBounds = YES;
+    alertLabel.textColor = [UIColor whiteColor];
+    alertLabel.frame = CGRectMake(0, 0, 100, 80);
+    [alertLabel sizeToFit];
+    alertLabel.w += 50;
+    alertLabel.h = 50;
+    alertLabel.x = (self.w - alertLabel.w) * 0.5;
+    alertLabel.y = (self.h - alertLabel.h) * 0.5;
+    alertLabel.backgroundColor = [UIColor colorWithRed:25/255.0 green:25/255.0 blue:25/255.0 alpha:1.0];
+    alertLabel.layer.cornerRadius = 10.0f;
+    [[UIApplication sharedApplication].keyWindow addSubview:alertLabel];
+    
+    [UIView animateWithDuration:1.5 animations:^{
+        alertLabel.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [alertLabel removeFromSuperview];
+    }];
+}
+
 @end

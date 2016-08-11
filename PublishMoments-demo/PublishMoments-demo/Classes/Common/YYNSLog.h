@@ -9,8 +9,8 @@
 #ifndef YYNSLog_h
 #define YYNSLog_h
 
-#import <Foundation/Foundation.h>
 #import <asl.h>
+#import <Foundation/Foundation.h>
 
 #ifdef DEBUG
  #define YYLog(...) NSLog(__VA_ARGS__)

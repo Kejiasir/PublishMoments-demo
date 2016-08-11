@@ -19,10 +19,10 @@
                                 target:(id)target
                                 action:(SEL)action;
 /**
- *  @param normalImg 正常的按钮图片
+ *  @param normalImg      正常的按钮图片
  *  @param highlightedImg 高亮的按钮图片
- *  @param target       按钮响应目标
- *  @param action       按钮响应事件
+ *  @param target         按钮响应目标
+ *  @param action         按钮响应事件
  *  @return 返回自定义的barButtonItem
  */
 + (instancetype)barButtonItemWithNormalImg:(NSString *)normalImg
