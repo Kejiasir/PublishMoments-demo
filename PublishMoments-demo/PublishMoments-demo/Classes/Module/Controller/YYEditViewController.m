@@ -16,6 +16,7 @@
 #import "MLSelectPhotoPickerAssetsViewController.h"
 
 @interface YYEditViewController ()<UIScrollViewDelegate,UITextViewDelegate,UIAlertViewDelegate,YYPhotosViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@property (nonatomic, strong) UIView       *topView;
 @property (nonatomic, strong) YYTextView   *textView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) YYPhotosView *photosView;
@@ -31,15 +32,16 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor clearColor];
     self.navigationItem.leftBarButtonItem =
-    [UIBarButtonItem barButtonItemWithTitle:@"Cancel" target:self action:@selector(cancelBtnClick)];
+    [UIBarButtonItem barButtonItemWithTitle:@"Cancel" titleColor:[UIColor whiteColor] target:self action:@selector(cancelBtnClick)];
     self.navigationItem.rightBarButtonItem =
-    [UIBarButtonItem barButtonItemWithTitle:@"Send" target:self action:@selector(sendBtnClick)];
+    [UIBarButtonItem barButtonItemWithTitle:@"Send" titleColor:ColorFromRGB(48, 216, 51) target:self action:@selector(sendBtnClick)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard) name:hideKeyboardNotification object:nil];
     [self setupSubView];
 }
 
 - (void)setupSubView {
     [self.view addSubview:self.scrollView];
+    [self.scrollView addSubview:self.topView];
     [self.scrollView addSubview:self.textView];
     [self.scrollView addSubview:self.photosView];
     [self.scrollView addSubview:self.bottomView];
@@ -135,7 +137,7 @@
         } else if (index == 1) {
             [self photoPick:index imgCount:imgCount];
         }
-    } cancelButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从手机相册选择",nil] show];
+    } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Take Photo",@"Choose from Photos",nil] show];
 }
 
 - (void)photoPick:(NSInteger)index imgCount:(NSInteger)imgCount {
@@ -176,7 +178,7 @@
         NSString *imageType = picker.allowsEditing?
     UIImagePickerControllerEditedImage:
         UIImagePickerControllerOriginalImage;
-        UIImage *image = [info objectForKey:imageType];
+        UIImage *image = [UIImage fixOrientation:[info objectForKey:imageType]];
         if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
             UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
         }
@@ -191,10 +193,10 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-// 保存图片到相册中
+// 保存照片到相册中
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     if (!error) {
-        NSLog(@"保存成功");
+        NSLog(@"保存照片成功");
     }
 }
 
@@ -209,13 +211,13 @@
     return YES;
 }
 
-- (void)bottomViewBtnClick:(NSInteger)type {
-    if (type == BtnTypeLocation) {
-        [self.view showMessageWithText:@"location"];
-    } else if (type == BtnTypeMention) {
-        [self.view showMessageWithText:@"mention"];
-    } else if (type == BtnTypeWhoLook) {
-        [self.view showMessageWithText:@"wholook"];
+- (void)bottomViewBtnClick:(UIButton *)button {
+    if (button.tag == BtnTypeLocation) {
+        [self.view showMessageWithText:button.titleLabel.text];
+    } else if (button.tag == BtnTypeMention) {
+        [self.view showMessageWithText:button.titleLabel.text];
+    } else if (button.tag == BtnTypeWhoLook) {
+        [self.view showMessageWithText:button.titleLabel.text];
     }
 }
 
@@ -237,10 +239,23 @@
     return _textView;
 }
 
+- (UIView *)topView {
+    if (!_topView) {
+        _topView = [[UIView alloc] init];
+        _topView.frame = CGRectMake(0, 0, self.view.w, -self.view.h*0.6);
+        _topView.backgroundColor = [UIColor whiteColor];
+        UIView *lineView = [[UIView alloc] init];
+        lineView.frame = CGRectMake(0, 0, self.view.w, 0.5);
+        lineView.backgroundColor = ColorFromRGB(217, 217, 217);
+        [_topView addSubview:lineView];
+    }
+    return _topView;
+}
+
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
-        _scrollView.backgroundColor = ColorFromRGB(245, 245, 245);
+        _scrollView.backgroundColor = ColorFromRGB(239, 239, 244);
         [_scrollView setFrame:CGRectMake(0, 0, self.view.w, self.view.h)];
         _scrollView.delegate = self;
         _scrollView.contentSize = CGSizeMake(self.view.w, self.view.h);
@@ -266,10 +281,9 @@
     if (!_bottomView) {
         _bottomView = [YYBottomView bottomView];
         __weak typeof(self) weakSele = self;
-        _bottomView.block = ^(NSInteger type) {
-            [weakSele bottomViewBtnClick:type];
+        _bottomView.block = ^(UIButton *button) {
+            [weakSele bottomViewBtnClick:button];
         };
-        //NSLog(@"%@",NSStringFromCGRect(_photosView.frame));
     }
     return _bottomView;
 }

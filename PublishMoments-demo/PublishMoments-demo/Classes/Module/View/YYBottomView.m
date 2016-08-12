@@ -18,9 +18,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.locationBtn.tag = BtnTypeLocation;
-    self.mentionBtn.tag = BtnTypeMention;
-    self.whoLookBtn.tag = BtnTypeWhoLook;
+    [self.locationBtn setTag:BtnTypeLocation];
+    [self.mentionBtn  setTag:BtnTypeMention];
+    [self.whoLookBtn  setTag:BtnTypeWhoLook];
 }
 
 + (instancetype)bottomView {
@@ -32,7 +32,7 @@
 
 - (IBAction)bottomViewBtnClick:(UIButton *)sender {
     if (self.block) {
-        self.block(sender.tag);
+        self.block(sender);
     }
 }
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^btnClick)(NSInteger tag);
+typedef void(^btnClick)(UIButton *button);
 
 typedef NS_ENUM(NSUInteger, BtnType) {
     BtnTypeLocation,
@@ -17,6 +17,6 @@ typedef NS_ENUM(NSUInteger, BtnType) {
 };
 
 @interface YYBottomView : UIView
-@property (nonatomic, copy) btnClick block;
 + (instancetype)bottomView;
+@property (nonatomic, copy) btnClick block;
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Extension)
++ (UIImage *)fixOrientation:(UIImage *)aImage;
 + (UIImage *)compressSourceImage:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
 @end

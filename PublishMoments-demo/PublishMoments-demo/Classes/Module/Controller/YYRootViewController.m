@@ -42,7 +42,7 @@
 - (void)rightBarButtonClick {
     [[[YYActionSheet alloc] initWithTitle:nil clickedAtIndex:^(NSInteger index) {
         if (index == 0) {
-            [self.view showMessageWithText:@"哈哈哈,没有小视频"];
+            [self.view showMessageWithText:@"hahaha, No Sight"];
         } else if (index == 1) {
             if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                 if (![self checkCamera]) {
@@ -81,7 +81,7 @@
                 }];
             }
         }
-    } cancelButtonTitle:@"取消" otherButtonTitles:@"小视频",@"拍照",@"从手机相册选择",nil] show];
+    } cancelButtonTitle:@"Cancel" otherButtonTitles:@"Sight",@"Take Photo",@"Choose from Photos",nil] show];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -90,7 +90,7 @@
         NSString *imageType = picker.allowsEditing?
     UIImagePickerControllerEditedImage:
         UIImagePickerControllerOriginalImage;
-        UIImage *image = [info objectForKey:imageType];
+        UIImage *image = [UIImage fixOrientation:[info objectForKey:imageType]];
         if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
             UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
             [self.photos addObject:image];
@@ -107,10 +107,10 @@
 }
 
 
-// 保存图片到相册中
+// 保存照片到相册中
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     if (!error) {
-        NSLog(@"保存成功");
+        NSLog(@"保存照片成功");
     }
 }
 

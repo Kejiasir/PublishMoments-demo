@@ -10,12 +10,14 @@
 
 @interface UIBarButtonItem (Extension)
 /**
- *  @param title  按钮标题
- *  @param target 按钮响应目标
- *  @param action 按钮响应事件
+ *  @param title      按钮标题
+ *  @param titleColor 标题颜色
+ *  @param target     按钮响应目标
+ *  @param action     按钮响应事件
  *  @return 返回自定义的barButtonItem
  */
 + (instancetype)barButtonItemWithTitle:(NSString *)title
+                            titleColor:(UIColor *)titleColor
                                 target:(id)target
                                 action:(SEL)action;
 /**

@@ -10,7 +10,7 @@
 
 @implementation UIBarButtonItem (Extension)
 
-+ (instancetype)barButtonItemWithTitle:(NSString *)title target:(id)target action:(SEL)action {
++ (instancetype)barButtonItemWithTitle:(NSString *)title titleColor:(UIColor *)titleColor target:(id)target action:(SEL)action {
     UIFont *titleFont = [UIFont systemFontOfSize:16];
     CGSize titleSize = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                            options:NSStringDrawingUsesLineFragmentOrigin
@@ -19,8 +19,8 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:title forState:UIControlStateNormal];
     [button.titleLabel setFont:titleFont];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [button setTitleColor:ColorFromRGBA(200, 200, 200, 0.5) forState:UIControlStateDisabled];
+    [button setTitleColor:titleColor forState:UIControlStateNormal];
+    [button setTitleColor:ColorFromRGBA(48, 216, 51, 0.5) forState:UIControlStateDisabled];
     [button setBounds:CGRectMake(0, 0, titleSize.width, titleSize.height)];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return [[UIBarButtonItem alloc] initWithCustomView:button];
