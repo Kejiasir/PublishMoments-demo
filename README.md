@@ -18,4 +18,4 @@
  
 
 ## License
-**LaunchAnimaiton 使用 MIT 许可证，详情见 LICENSE 文件**
+**PublishMoments-demo 使用 MIT 许可证，详情见 LICENSE 文件**
