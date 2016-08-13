@@ -15,3 +15,7 @@
 <img src="IMAGE/IMG_1017.PNG?v=3&s=100" alt="GitHub" title="demo截图001" width="260" height="480"/>
 <img src="IMAGE/IMG_1018.PNG?v=3&s=100" alt="GitHub" title="demo截图002" width="260" height="480"/>
 <img src="IMAGE/IMG_1019.PNG?v=3&s=100" alt="GitHub" title="demo截图003" width="260" height="480"/>
+ 
+
+## License
+**LaunchAnimaiton 使用 MIT 许可证，详情见 LICENSE 文件**
