@@ -1,0 +1,6 @@
+framework module LaunchAnimation {
+  umbrella header "LaunchAnimation-umbrella.h"
+
+  export *
+  module * { export * }
+}

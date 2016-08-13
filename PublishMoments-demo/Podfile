@@ -6,6 +6,7 @@ target 'PublishMoments-demo' do
     
     # Pods for PublishMoments-demo
     pod 'SDWebImage', '~> 3.8.1'
+    pod 'LaunchAnimation', '~> 0.1.0'
     
     target 'PublishMoments-demoTests' do
         inherit! :search_paths

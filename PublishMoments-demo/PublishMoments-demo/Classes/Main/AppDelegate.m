@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LaunchImageView.h"
 #import "YYRootViewController.h"
 #import "YYNavigationController.h"
 
@@ -19,9 +20,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[YYNavigationController alloc] initWithRootViewController:[[YYRootViewController alloc] init]]; 
-    [self.window makeKeyAndVisible];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window setRootViewController:
+     [[YYNavigationController alloc] initWithRootViewController:[[YYRootViewController alloc] init]]];
+    [self.window makeKeyAndVisible]; 
+    [self.window addSubview:[[LaunchImageView alloc]
+                             initWithFrame:self.window.bounds
+                             animationType:AnimationTypeUpAndDown
+                             duration:1.5f]];
     return YES;
 }
 
