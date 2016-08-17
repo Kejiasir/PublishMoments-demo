@@ -10,7 +10,7 @@
 #import "YYEditViewController.h"
 #import "YYNavigationController.h"
 #import <AssetsLibrary/ALAsset.h>
-#import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVFoundation.h> 
 #import "MLSelectPhotoBrowserViewController.h"
 #import "MLSelectPhotoPickerAssetsViewController.h"
 
@@ -118,24 +118,21 @@
 - (BOOL)checkCamera {
     NSString *mediaType = AVMediaTypeVideo;
     AVAuthorizationStatus authorStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
-    if (authorStatus == AVAuthorizationStatusRestricted || authorStatus == AVAuthorizationStatusDenied) {
-        // 相机不可用
+    if (authorStatus == AVAuthorizationStatusRestricted ||
+        authorStatus == AVAuthorizationStatusDenied) {
         return NO;
     }
     return YES;
 }
 
 - (BOOL)checkPhotoLibrary {
-    //ALAuthorizationStatus authorStatus = [ALAssetsLibrary authorizationStatus];
-    switch ([ALAssetsLibrary authorizationStatus]) {
-        case ALAuthorizationStatusNotDetermined: // 用户尚未作出关于此应用程序的选择
-        case ALAuthorizationStatusRestricted:    // 此应用无法访问照片数据,如家长限制
-        case ALAuthorizationStatusDenied:        // 用户已拒绝此应用访问相册数据
-            break;
-        case ALAuthorizationStatusAuthorized:    // 用户已授权该应用可以访问照片数据
-            return YES;
+    ALAuthorizationStatus authorStatus = [ALAssetsLibrary authorizationStatus];
+    if (authorStatus == ALAuthorizationStatusNotDetermined ||
+        authorStatus == ALAuthorizationStatusRestricted ||
+        authorStatus == ALAuthorizationStatusDenied) {
+        return NO;
     }
-    return NO;
+    return YES;
 }
 
 - (void)presentViewController {

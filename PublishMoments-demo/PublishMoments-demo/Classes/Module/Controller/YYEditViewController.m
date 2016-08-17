@@ -204,8 +204,8 @@
 - (BOOL)checkCamera {
     NSString *mediaType = AVMediaTypeVideo;
     AVAuthorizationStatus authorStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
-    if (authorStatus == AVAuthorizationStatusRestricted || authorStatus == AVAuthorizationStatusDenied) {
-        // 相机不可用
+    if (authorStatus == AVAuthorizationStatusRestricted ||
+        authorStatus == AVAuthorizationStatusDenied) { 
         return NO;
     }
     return YES;
