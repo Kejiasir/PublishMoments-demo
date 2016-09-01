@@ -23,10 +23,10 @@
     [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window setRootViewController:
      [[YYNavigationController alloc] initWithRootViewController:[[YYRootViewController alloc] init]]];
-    [self.window makeKeyAndVisible]; 
-    [self.window addSubview:[[LaunchImageView alloc]
-                             initWithFrame:self.window.bounds
-                             animationType:AnimationTypeUpAndDown
+    [self.window makeKeyAndVisible];
+    [self.window addSubview:[LaunchImageView
+                             launchImageWithFrame:self.window.bounds
+                             animationType:AnimationTypeCurveEaseOut
                              duration:1.5f]];
     return YES;
 }

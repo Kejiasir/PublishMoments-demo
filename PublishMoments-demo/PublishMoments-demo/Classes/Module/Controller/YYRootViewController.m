@@ -10,12 +10,16 @@
 #import "YYEditViewController.h"
 #import "YYNavigationController.h"
 #import <AssetsLibrary/ALAsset.h>
-#import <AVFoundation/AVFoundation.h> 
+#import <AVFoundation/AVFoundation.h>
 #import "MLSelectPhotoBrowserViewController.h"
 #import "MLSelectPhotoPickerAssetsViewController.h"
+#import "YYInfiniteLoopView.h"
+#import "YYTestViewController.h"
 
 @interface YYRootViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSArray *imageUrls;
+@property (nonatomic, strong) NSArray *titles;
 @end
 
 @implementation YYRootViewController
@@ -37,8 +41,53 @@
                                          target:self
                                          action:@selector(rightBarButtonClick)];
     [self.navigationItem setRightBarButtonItems:@[fixedSpace,rightBarButtonItem]];
+    [self addLoopView];
 }
 
+#pragma mark -
+- (void)addLoopView {
+    YYInfiniteLoopView *loopView = [[YYInfiniteLoopView alloc]
+                                    initWithImageUrls:self.imageUrls
+                                    titles:self.titles
+                                    didSelectedImage:^(NSInteger index) {
+                                        [self didSelectedImageWithIndex:index];
+                                    }];
+    [loopView setPageIndicatorColor:[UIColor orangeColor]];
+    [loopView setCurrentPageIndicatorColor:[UIColor magentaColor]];
+    [loopView setFrame:CGRectMake(0, 0, self.view.w, self.view.h * 0.35)];
+    [self.tableView setTableHeaderView:loopView];
+}
+
+- (void)didSelectedImageWithIndex:(NSInteger)index {
+    YYTestViewController *testVC = [[YYTestViewController alloc] init];
+    UIColor *bgColor = nil;
+    switch (index) {
+            case 0:
+            testVC.title = @"第一张图";
+            bgColor = [UIColor orangeColor];
+            break;
+            case 1:
+            testVC.title = @"第二张图";
+            bgColor = [UIColor brownColor];
+            break;
+            case 2:
+            testVC.title = @"第三张图";
+            bgColor = [UIColor greenColor];
+            break;
+            case 3:
+            testVC.title = @"第四张图";
+            bgColor = [UIColor magentaColor];
+            break;
+        default:
+            testVC.title = @"testVC";
+            bgColor = [UIColor whiteColor];
+            break;
+    }
+    testVC.view.backgroundColor = bgColor;
+    [self.navigationController pushViewController:testVC animated:YES];
+}
+
+#pragma mark -
 - (void)rightBarButtonClick {
     [[[YYActionSheet alloc] initWithTitle:nil clickedAtIndex:^(NSInteger index) {
         if (index == 0) {
@@ -151,4 +200,25 @@
     return _photos;
 }
 
+- (NSArray *)imageUrls {
+    if (!_imageUrls) {
+        _imageUrls = @[@"http://img2.91.com/uploads/allimg/150106/59-1501061H225-53.jpg",
+                       @"http://img1.91.com/uploads/allimg/150106/59-1501061GR6-51.jpg",
+                       @"http://img2.91.com/uploads/allimg/150319/59-1503191P412-50.jpg",
+                       @"http://img3.91.com/uploads/allimg/150304/59-1503041S553-50.jpg",
+                       @"http://img1.91.com/uploads/allimg/150304/59-1503041SS0.jpg"];
+    }
+    return _imageUrls;
+}
+
+- (NSArray *)titles {
+    if (!_titles) {
+        _titles = @[@"第一张图, ( ⊙ o ⊙ )啊！O(∩_∩)O哈哈~",
+                    @"第二张图, ( ⊙ o ⊙ )啊！O(∩_∩)O哈哈~",
+                    @"第三张图, ( ⊙ o ⊙ )啊！O(∩_∩)O哈哈~",
+                    @"第四张图, ( ⊙ o ⊙ )啊！O(∩_∩)O哈哈~",
+                    @"第五张图, ( ⊙ o ⊙ )啊！O(∩_∩)O哈哈~"];
+    }
+    return _titles;
+}
 @end

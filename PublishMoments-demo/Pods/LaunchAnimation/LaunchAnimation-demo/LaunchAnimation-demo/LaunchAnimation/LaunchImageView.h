@@ -11,7 +11,10 @@
 typedef NS_ENUM(NSUInteger, AnimationType) {
     AnimationTypeUpAndDown,
     AnimationTypeLeftAndRight,
-    AnimationTypeUpDownAndLeftRight
+    AnimationTypeUpDownAndLeftRight,
+    AnimationTypeCurveEaseOut,
+    AnimationTypeMovePositionUp,
+    AnimationTypeMovePositionLeft
 };
 
 @interface LaunchImageView : UIView
@@ -24,7 +27,12 @@ typedef NS_ENUM(NSUInteger, AnimationType) {
  *
  *  @return return current object
  */
-- (instancetype)initWithFrame:(CGRect)frame
++ (instancetype)launchImageWithFrame:(CGRect)aFrame
+                       animationType:(AnimationType)aAnimationType
+                            duration:(CGFloat)aDuration;
+
+- (instancetype)initWithFrame:(CGRect)aFrame
                 animationType:(AnimationType)aAnimationType
                      duration:(CGFloat)aDuration;
+
 @end

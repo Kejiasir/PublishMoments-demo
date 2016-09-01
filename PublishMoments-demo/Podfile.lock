@@ -1,17 +1,17 @@
 PODS:
-  - LaunchAnimation (0.1.0)
+  - LaunchAnimation (0.2.0)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
-  - LaunchAnimation (~> 0.1.0)
+  - LaunchAnimation (~> 0.2.0)
   - SDWebImage (~> 3.8.1)
 
 SPEC CHECKSUMS:
-  LaunchAnimation: fb882debae8dd4f72dc21d9eff50c13aa46a6ae4
+  LaunchAnimation: c2835e33cd6042350e4084a8d5ee1620a8ede61b
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: a25793757ef014bf48f549fe63adde90c966bb11
+PODFILE CHECKSUM: b693ff802cc634859d1065fffb3f15872a7a7aee
 
 COCOAPODS: 1.0.1

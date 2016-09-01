@@ -20,6 +20,11 @@
 		A20C68F11D4F36D800C1ADC0 /* Monaco.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A20C68F01D4F36D800C1ADC0 /* Monaco.ttf */; };
 		A20C68F41D4F3EF700C1ADC0 /* YYActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C68F31D4F3EF700C1ADC0 /* YYActionSheet.m */; };
 		A20C68F71D4F501000C1ADC0 /* YYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C68F61D4F501000C1ADC0 /* YYNavigationController.m */; };
+		A25B5DFD1D7841AE00CDD7A2 /* YYInfiniteLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DF61D7841AE00CDD7A2 /* YYInfiniteLoopView.m */; };
+		A25B5DFE1D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DF81D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m */; };
+		A25B5DFF1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DFA1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m */; };
+		A25B5E001D7841AE00CDD7A2 /* YYWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DFC1D7841AE00CDD7A2 /* YYWeakTimer.m */; };
+		A25B5E031D78457300CDD7A2 /* YYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5E021D78457300CDD7A2 /* YYTestViewController.m */; };
 		A26FD3081D5C7493004D12EF /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FD3021D5C7493004D12EF /* SDBrowserImageView.m */; };
 		A26FD3091D5C7493004D12EF /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FD3041D5C7493004D12EF /* SDPhotoBrowser.m */; };
 		A26FD30A1D5C7493004D12EF /* SDWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FD3071D5C7493004D12EF /* SDWaitingView.m */; };
@@ -108,6 +113,17 @@
 		A20C68F31D4F3EF700C1ADC0 /* YYActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYActionSheet.m; sourceTree = "<group>"; };
 		A20C68F51D4F501000C1ADC0 /* YYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYNavigationController.h; sourceTree = "<group>"; };
 		A20C68F61D4F501000C1ADC0 /* YYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYNavigationController.m; sourceTree = "<group>"; };
+		A25B5DF41D7841AE00CDD7A2 /* YYConfigured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYConfigured.h; sourceTree = "<group>"; };
+		A25B5DF51D7841AE00CDD7A2 /* YYInfiniteLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYInfiniteLoopView.h; sourceTree = "<group>"; };
+		A25B5DF61D7841AE00CDD7A2 /* YYInfiniteLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYInfiniteLoopView.m; sourceTree = "<group>"; };
+		A25B5DF71D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYInfiniteLoopViewCell.h; sourceTree = "<group>"; };
+		A25B5DF81D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYInfiniteLoopViewCell.m; sourceTree = "<group>"; };
+		A25B5DF91D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYInfiniteLoopViewLayout.h; sourceTree = "<group>"; };
+		A25B5DFA1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYInfiniteLoopViewLayout.m; sourceTree = "<group>"; };
+		A25B5DFB1D7841AE00CDD7A2 /* YYWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakTimer.h; sourceTree = "<group>"; };
+		A25B5DFC1D7841AE00CDD7A2 /* YYWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakTimer.m; sourceTree = "<group>"; };
+		A25B5E011D78457300CDD7A2 /* YYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTestViewController.h; sourceTree = "<group>"; };
+		A25B5E021D78457300CDD7A2 /* YYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTestViewController.m; sourceTree = "<group>"; };
 		A26FD3011D5C7493004D12EF /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
 		A26FD3021D5C7493004D12EF /* SDBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDBrowserImageView.m; sourceTree = "<group>"; };
 		A26FD3031D5C7493004D12EF /* SDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPhotoBrowser.h; sourceTree = "<group>"; };
@@ -310,6 +326,7 @@
 			children = (
 				A29898451D5B43490027823B /* MLSelectPhoto */,
 				A26FD3001D5C7493004D12EF /* SDPhotoBowser */,
+				A25B5DF31D7841AE00CDD7A2 /* YYInfiniteLoopView */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -361,6 +378,22 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		A25B5DF31D7841AE00CDD7A2 /* YYInfiniteLoopView */ = {
+			isa = PBXGroup;
+			children = (
+				A25B5DF41D7841AE00CDD7A2 /* YYConfigured.h */,
+				A25B5DFB1D7841AE00CDD7A2 /* YYWeakTimer.h */,
+				A25B5DFC1D7841AE00CDD7A2 /* YYWeakTimer.m */,
+				A25B5DF51D7841AE00CDD7A2 /* YYInfiniteLoopView.h */,
+				A25B5DF61D7841AE00CDD7A2 /* YYInfiniteLoopView.m */,
+				A25B5DF71D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.h */,
+				A25B5DF81D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m */,
+				A25B5DF91D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.h */,
+				A25B5DFA1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m */,
+			);
+			path = YYInfiniteLoopView;
+			sourceTree = "<group>";
+		};
 		A26FD3001D5C7493004D12EF /* SDPhotoBowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +425,8 @@
 				A27C921F1D53306400EE8A5B /* YYRootViewController.m */,
 				A27C921C1D53306400EE8A5B /* YYEditViewController.h */,
 				A27C921D1D53306400EE8A5B /* YYEditViewController.m */,
+				A25B5E011D78457300CDD7A2 /* YYTestViewController.h */,
+				A25B5E021D78457300CDD7A2 /* YYTestViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -772,8 +807,10 @@
 				A27C92221D53306400EE8A5B /* YYEditViewController.m in Sources */,
 				A27C92291D53373000EE8A5B /* YYPhotosView.m in Sources */,
 				A20C68EF1D4F340B00C1ADC0 /* UIBarButtonItem+Extension.m in Sources */,
+				A25B5E001D7841AE00CDD7A2 /* YYWeakTimer.m in Sources */,
 				A27C922C1D547B8700EE8A5B /* YYBottomView.m in Sources */,
 				A2EDAF3C1D5C826D008249EF /* YYNotification.m in Sources */,
+				A25B5E031D78457300CDD7A2 /* YYTestViewController.m in Sources */,
 				A20C68F71D4F501000C1ADC0 /* YYNavigationController.m in Sources */,
 				A298987C1D5B43490027823B /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
 				A26FD3081D5C7493004D12EF /* SDBrowserImageView.m in Sources */,
@@ -798,12 +835,15 @@
 				A26FD30A1D5C7493004D12EF /* SDWaitingView.m in Sources */,
 				A27C92231D53306400EE8A5B /* YYRootViewController.m in Sources */,
 				A27C92261D53355D00EE8A5B /* YYTextView.m in Sources */,
+				A25B5DFF1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m in Sources */,
+				A25B5DFD1D7841AE00CDD7A2 /* YYInfiniteLoopView.m in Sources */,
 				A20C68E61D4F2CD400C1ADC0 /* UIView+Extension.m in Sources */,
 				A29898771D5B43490027823B /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
 				A29898801D5B43490027823B /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				A298987F1D5B43490027823B /* MLPhotoPickerImageView.m in Sources */,
 				A298987B1D5B43490027823B /* MLSelectPhotoNavigationViewController.m in Sources */,
 				A26FD3091D5C7493004D12EF /* SDPhotoBrowser.m in Sources */,
+				A25B5DFE1D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m in Sources */,
 				A20C68931D4F07D600C1ADC0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

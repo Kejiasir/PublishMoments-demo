@@ -13,22 +13,43 @@
 #define HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define MAINSCREEN [[UIScreen mainScreen] currentMode].size
 
+@interface LaunchImageView ()
+@property (nonatomic, strong) UIImageView *launchImgView;
+@end
+
 @implementation LaunchImageView
 
 #pragma mark - Initialization
-- (instancetype)initWithFrame:(CGRect)frame
++ (instancetype)launchImageWithFrame:(CGRect)aFrame
+                       animationType:(AnimationType)aAnimationType
+                            duration:(CGFloat)aDuration {
+    return [[LaunchImageView alloc] initWithFrame:aFrame
+                                    animationType:aAnimationType
+                                         duration:aDuration];
+}
+
+- (instancetype)initWithFrame:(CGRect)aFrame
                 animationType:(AnimationType)aAnimationType
                      duration:(CGFloat)aDuration {
-    if (self = [super initWithFrame:frame]) {
+    
+    if (self = [super initWithFrame:aFrame]) {
+        
         UIImage *launchImage = [UIImage getLaunchImage];
         [self setBackgroundColor:[UIColor clearColor]];
-        [self setFrame:frame];
+        [self setFrame:aFrame];
+        
         if (aAnimationType == AnimationTypeUpAndDown) {
             [self upAndDownLaunchImage:launchImage duration:aDuration];
         } else if (aAnimationType == AnimationTypeLeftAndRight) {
             [self leftAndRightLaunchImage:launchImage duration:aDuration];
         } else if (aAnimationType == AnimationTypeUpDownAndLeftRight) {
             [self upDownAndLeftRightLaunchImage:launchImage duration:aDuration];
+        } else if (aAnimationType == AnimationTypeCurveEaseOut) {
+            [self curveEaseOutLaunchImage:launchImage duration:aDuration];
+        } else if (aAnimationType == AnimationTypeMovePositionUp) {
+            [self movePositionUpLaunchImage:launchImage duration:aDuration];
+        } else if (aAnimationType == AnimationTypeMovePositionLeft) {
+            [self movePositionLeftLaunchImage:launchImage duration:aDuration];
         }
     }
     return self;
@@ -163,7 +184,117 @@
     });
 }
 
+- (void)curveEaseOutLaunchImage:(UIImage *)launchImage duration:(CGFloat)aDuration {
+    UIImageView *launchImgView = [[UIImageView alloc] init];
+    [launchImgView setImage:launchImage];
+    [launchImgView setFrame:self.bounds];
+    [self addSubview:launchImgView];
+    
+    [UIView animateWithDuration:aDuration animations:^{
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [launchImgView setTransform:CGAffineTransformMakeScale(1.5, 1.5)];
+        [launchImgView setAlpha:.0f];
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+}
+
+/*
+ ========私有API========
+ cube 方块
+ suckEffect 三角
+ rippleEffect 水波抖动
+ pageCurl 上翻页
+ pageUnCurl 下翻页
+ oglFlip 上下翻转
+ cameraIrisHollowOpen 镜头快门开
+ cameraIrisHollowClose 镜头快门关
+ ============================================
+ // 转场效果
+ CA_EXTERN NSString * const kCATransitionFade
+ CA_EXTERN NSString * const kCATransitionMoveIn
+ CA_EXTERN NSString * const kCATransitionPush
+ CA_EXTERN NSString * const kCATransitionReveal
+ // 转场方向
+ CA_EXTERN NSString * const kCATransitionFromRight
+ CA_EXTERN NSString * const kCATransitionFromLeft
+ CA_EXTERN NSString * const kCATransitionFromTop
+ CA_EXTERN NSString * const kCATransitionFromBottom
+ 
+ kCAMediaTimingFunctionLinear（线性）：匀速，给你一个相对静态的感觉
+ kCAMediaTimingFunctionEaseIn（渐进）：动画缓慢进入，然后加速离开
+ kCAMediaTimingFunctionEaseOut（渐出）：动画全速进入，然后减速的到达目的地
+ kCAMediaTimingFunctionEaseInEaseOut（渐进渐出）：动画缓慢的进入，中间加速，然后减速的到达目的地
+ */
+- (void)movePositionLeftLaunchImage:(UIImage *)launchImage duration:(CGFloat)aDuration {
+    [self setLaunchImage:launchImage
+                duration:aDuration
+       basicAnimaKeyPath:@"position.x"
+               fromValue:@(self.launchImgView.center.x)
+                 toValue:@(self.launchImgView.center.x-WIDTH)
+            functionName:kCAMediaTimingFunctionEaseIn
+                  forKey:@"animationX"];
+}
+
+- (void)movePositionUpLaunchImage:(UIImage *)launchImage duration:(CGFloat)aDuration {
+    [self setLaunchImage:launchImage
+                duration:aDuration
+       basicAnimaKeyPath:@"position.y"
+               fromValue:@(self.launchImgView.center.y)
+                 toValue:@(self.launchImgView.center.y-HEIGHT)
+            functionName:kCAMediaTimingFunctionEaseOut
+                  forKey:@"animationY"];
+}
+
+- (void)setLaunchImage:(UIImage *)launchImage
+              duration:(CGFloat)aDuration
+     basicAnimaKeyPath:(NSString *)keyPath
+             fromValue:(id)fromValue
+               toValue:(id)toValue
+          functionName:(NSString *)functionName
+                forKey:(NSString *)key {
+    
+    [self.launchImgView setImage:launchImage];
+    [self.launchImgView setFrame:self.bounds];
+    [self addSubview:self.launchImgView];
+    
+    CABasicAnimation *positionAnima =
+    [CABasicAnimation animationWithKeyPath:keyPath];
+    [positionAnima setDuration:aDuration];
+    [positionAnima setDelegate:self];
+    [positionAnima setFromValue:fromValue];
+    [positionAnima setToValue:toValue];
+    [positionAnima setTimingFunction:
+     [CAMediaTimingFunction functionWithName:functionName]];
+    [positionAnima setRepeatCount:.0f];
+    [positionAnima setRepeatDuration:.0f];
+    [positionAnima setAutoreverses:NO];
+    [positionAnima setRemovedOnCompletion:YES];
+    [positionAnima setFillMode:kCAFillModeForwards];
+    [self.launchImgView.layer addAnimation:positionAnima forKey:key];
+}
+
+
+#pragma mark - CAAnimationDelegate
+- (void)animationDidStart:(CAAnimation *)anim {
+    
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    [self removeFromSuperview];
+}
+
+
 #pragma mark -
+- (UIImageView *)launchImgView {
+    if (!_launchImgView) {
+        _launchImgView = [[UIImageView alloc] init];
+        [_launchImgView setFrame:self.bounds];
+    }
+    return _launchImgView;
+}
+
+
 - (void)dealloc {
     NSLog(@"%s",__func__);
 }
