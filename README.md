@@ -13,9 +13,24 @@
   * 嗯, 最后感谢两位大神的优秀代码.
   
 ### 放几张预览图吧, 有兴趣的朋友可以Clone or download demo 来看看
-<img src="IMAGE/001.gif?v=3&s=100" alt="GitHub" title="demo截图001" width="270" height="480"/>
-<img src="IMAGE/IMG_1018.PNG?v=3&s=100" alt="GitHub" title="demo截图002" width="270" height="480"/>
-<img src="IMAGE/IMG_1019.PNG?v=3&s=100" alt="GitHub" title="demo截图003" width="270" height="480"/>
+
+<table>
+ <tr>
+  <td>
+    <img src="IMAGE/001.gif" width="300"/>
+  </td>
+  <td>
+    <img src="IMAGE/IMG_1018.PNG" width="300"/>
+  </td>
+  <td>
+    <img src="IMAGE/IMG_1019.PNG" width="300"/>
+  </td>
+ </tr>
+</table>
+
+<!--<img src="IMAGE/001.gif?v=3&s=100" alt="GitHub" title="demo截图001" width="270" height="480"/>-->
+<!--<img src="IMAGE/IMG_1018.PNG?v=3&s=100" alt="GitHub" title="demo截图002" width="270" height="480"/>-->
+<!--<img src="IMAGE/IMG_1019.PNG?v=3&s=100" alt="GitHub" title="demo截图003" width="270" height="480"/>-->
  
 
 ## License
