@@ -2,7 +2,7 @@
 //  YYInfiniteLoopView.m
 //  YYInfiniteLoopView-demo
 //
-//  Created by Arvin on 16/8/30.
+//  Created by Arvin on 16/9/2.
 //  Copyright © 2016年 Arvin. All rights reserved.
 //
 
@@ -19,7 +19,6 @@
 @property (nonatomic, strong) NSArray *imageUrls;
 /// 选中的图片索引
 @property (nonatomic, copy) void(^didSelectedImage)(NSInteger index);
-
 /// UICollectionView
 @property (nonatomic, strong) UICollectionView *collectionView;
 /// 标题和分页索引的背景
@@ -32,35 +31,37 @@
 @property (nonatomic, strong) UIView *coverView;
 /// 定时器
 @property (nonatomic, strong) NSTimer *timer;
+/// 转场动画
+@property (nonatomic, strong) CATransition *animation;
 @end
 
 @implementation YYInfiniteLoopView
 
+#pragma mark - Life Cycle
 + (instancetype)infiniteLoopViewWithImageUrls:(NSArray<NSString *> *)imageUrls
                                        titles:(NSArray<NSString *> *)titles
                              didSelectedImage:(didSelectedImage)selectedImage {
-    return [[YYInfiniteLoopView alloc] initWithImageUrls:imageUrls titles:titles didSelectedImage:selectedImage];
+    return [[YYInfiniteLoopView alloc] initWithImageUrls:imageUrls
+                                                  titles:titles
+                                        didSelectedImage:selectedImage];
 }
 
 - (instancetype)initWithImageUrls:(NSArray<NSString *> *)imageUrls
                            titles:(NSArray<NSString *> *)titles
                  didSelectedImage:(didSelectedImage)selectedImage {
-    
     if (self = [super init]) {
-        
         NSAssert(imageUrls != nil, @"Image URL array can not be null...");
-        
         [self setTitles:titles];
         [self setImageUrls:imageUrls];
         [self setDidSelectedImage:selectedImage];
-        
         [self.titleLabel setText:[self.titles firstObject]];
         [self.pageControl setNumberOfPages:[self.imageUrls count]];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([self.imageUrls count] > 1) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[self.imageUrls count] inSection:0];
-                [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+                [self.collectionView scrollToItemAtIndexPath:
+                 [NSIndexPath indexPathForItem:[self.imageUrls count] inSection:0]
+                                            atScrollPosition:UICollectionViewScrollPositionLeft
+                                                    animated:NO];
                 [self addTimer];
             }
         });
@@ -91,54 +92,69 @@
     [self setAutoPlayer:YES];
     [self setTimeInterval:3.0f];
     [self setHideTitleLabel:NO];
-    [self setBgViewColor:RGBAColor(0, 0, 0, .4f)];
+    [self setCoverColor:RGBACOLOR(0, 0, 0, .3f)];
+    [self setBgViewColor:RGBACOLOR(0, 0, 0, .4f)];
     [self setTitleTextColor:[UIColor whiteColor]];
     [self setTitleTextFont:[UIFont systemFontOfSize:14]];
     [self setPageIndicatorColor:[UIColor whiteColor]];
     [self setCurrentPageIndicatorColor:[UIColor blueColor]];
+    [self setAnimationDuration:1.0f];
+    [self setAnimationType:InfiniteLoopViewAnimationTypeNone];
+    [self setAnimationDirection:InfiniteLoopViewAnimationDirectionRight];
 }
 
 - (void)setupAllSubView {
     
     /// UICollectionView
-    self.collectionView = [[UICollectionView alloc]
-                           initWithFrame:CGRectZero
-                           collectionViewLayout:[[YYInfiniteLoopViewLayout alloc] init]];
-    [self.collectionView setDelegate:self];
-    [self.collectionView setDataSource:self];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-    [self.collectionView registerClass:[YYInfiniteLoopViewCell class] forCellWithReuseIdentifier:CellIdentifier];
-    [self addSubview:self.collectionView];
+    [self addSubview:self.collectionView = ({
+        self.collectionView = [[UICollectionView alloc]
+                               initWithFrame:CGRectZero
+                               collectionViewLayout:[YYInfiniteLoopViewLayout new]];
+        [self.collectionView setDelegate:self];
+        [self.collectionView setDataSource:self];
+        [self.collectionView setBackgroundColor:RGBCOLOR(243, 243, 245)];
+        [self.collectionView registerClass:[YYInfiniteLoopViewCell class]
+                forCellWithReuseIdentifier:CellIdentifier];
+        self.collectionView;
+    })];
     
     /// 添加一层蒙版
-    self.coverView = [[UIView alloc] init];
-    [self.coverView setHidden:self.hideCover];
-    [self.coverView setUserInteractionEnabled:NO];
-    [self.coverView setBackgroundColor:RGBAColor(0, 0, 0, .3f)];
-    [self addSubview:self.coverView];
+    [self addSubview:self.coverView = ({
+        self.coverView = [[UIView alloc] init];
+        [self.coverView setHidden:self.hideCover];
+        [self.coverView setUserInteractionEnabled:NO];
+        [self.coverView setBackgroundColor:self.coverColor];
+        self.coverView;
+    })];
     
     /// 标题和分页索引的背景
-    self.backgroundView = [[UIImageView alloc] init];
-    [self.backgroundView setHidden:self.hideTitleLabel];
-    [self.backgroundView setBackgroundColor:self.bgViewColor];
-    [self.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.backgroundView setClipsToBounds:YES];
-    [self addSubview:self.backgroundView];
+    [self addSubview:self.backgroundView = ({
+        self.backgroundView = [[UIImageView alloc] init];
+        [self.backgroundView setHidden:self.hideTitleLabel];
+        [self.backgroundView setBackgroundColor:self.bgViewColor];
+        [self.backgroundView setContentMode:UIViewContentModeScaleAspectFill];
+        [self.backgroundView setClipsToBounds:YES];
+        self.backgroundView;
+    })];
     
     /// 标题标签
-    self.titleLabel = [[UILabel alloc] init];
-    [self.titleLabel setFont:self.titleTextFont];
-    [self.titleLabel setHidden:self.hideTitleLabel];
-    [self.titleLabel setTextColor:self.titleTextColor];
-    [self.titleLabel setTextAlignment:NSTextAlignmentLeft];
-    [self addSubview:self.titleLabel];
+    [self addSubview:self.titleLabel = ({
+        self.titleLabel = [[UILabel alloc] init];
+        [self.titleLabel setFont:self.titleTextFont];
+        [self.titleLabel setHidden:self.hideTitleLabel];
+        [self.titleLabel setTextColor:self.titleTextColor];
+        [self.titleLabel setTextAlignment:NSTextAlignmentLeft];
+        self.titleLabel;
+    })];
     
     /// 分页索引控件
-    self.pageControl = [[UIPageControl alloc] init];
-    [self.pageControl setHidesForSinglePage:YES];
-    [self.pageControl setPageIndicatorTintColor:self.pageIndicatorColor];
-    [self.pageControl setCurrentPageIndicatorTintColor:self.currentPageIndicatorColor];
-    [self addSubview:self.pageControl];
+    [self addSubview:self.pageControl = ({
+        self.pageControl = [[UIPageControl alloc] init];
+        [self.pageControl setHidesForSinglePage:YES];
+        [self.pageControl setPageIndicatorTintColor:self.pageIndicatorColor];
+        [self.pageControl setCurrentPageIndicatorTintColor:self.currentPageIndicatorColor];
+        self.pageControl;
+    })];
 }
 
 - (void)layoutSubviews {
@@ -155,45 +171,42 @@
     
     [self.collectionView setFrame:self.bounds];
     [self.coverView setFrame:self.bounds];
-    
+    // 标题置顶
     if (self.titlePosition == InfiniteLoopViewTitlePositionTop) {
         [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [self.backgroundView setFrame:CGRectMake(0, 0, self_width, bgViewH)];
-        [self.titleLabel setFrame:CGRectMake(margin * 0.5, 0, self_width - margin, bgViewH)];
+        [self.titleLabel setFrame:CGRectMake(margin * .5, 0, self_width - margin, bgViewH)];
         
-        CGFloat pageControlX = 0.0f;
+        CGFloat pageControlX = .0f;
         if (self.pagePosition == InfiniteLoopViewPagePositionCenter) {
-            pageControlX = (self_width - pageControlW) * 0.5;
+            pageControlX = (self_width - pageControlW) * .5;
         } else if (self.pagePosition == InfiniteLoopViewPagePositionLeft) {
-            pageControlX = margin * 0.5;
+            pageControlX = margin * .5;
         } else if (self.pagePosition == InfiniteLoopViewPagePositionRight) {
             pageControlX = self_width - pageControlW - margin;
         }
         [self.pageControl setFrame:CGRectMake(pageControlX, bgViewY, pageControlW, bgViewH)];
     } else {
         [self.backgroundView setFrame:CGRectMake(0, bgViewY, self_width, bgViewH)];
-        [self.titleLabel setFrame:CGRectMake(margin * 0.5, bgViewY, self_width - margin - pageControlW - ([self.imageUrls count]>1?spacing:0), bgViewH)];
+        [self.titleLabel setFrame:CGRectMake(margin * .5, bgViewY, self_width - margin - pageControlW - ([self.imageUrls count]>1?spacing:0), bgViewH)];
         [self.pageControl setFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame) + spacing, bgViewY, pageControlW, bgViewH)];
     }
     if (self.hideTitleLabel) {
-        [self.pageControl setFrame:CGRectMake((self_width - pageControlW) * 0.5, bgViewY, pageControlW, bgViewH)];
+        [self.pageControl setFrame:CGRectMake((self_width - pageControlW) * .5, bgViewY, pageControlW, bgViewH)];
     }
 }
 
-#pragma mark - 定时器相关
+#pragma mark - Timer Method
 - (void)addTimer {
-    
-    if (!_autoPlayer) {
-        return;
-    }
-    
+    if (!_autoPlayer) return;
     [self removeTimer];
     __weak typeof(self) weakSele = self;
-    self.timer = [YYWeakTimer scheduledTimerWithTimeInterval:self.timeInterval
-                                                      target:self
-                                                       block:^(id userInfo) {
-                                                           [weakSele nextImage];
-                                                       } userInfo:@"" repeats:YES];
+    self.timer = [YYWeakTimer
+                  scheduledTimerWithTimeInterval:self.timeInterval
+                  target:self
+                  block:^(id userInfo) {
+                      [weakSele nextImage];
+                  } userInfo:@"" repeats:YES];
 }
 
 - (void)removeTimer {
@@ -204,16 +217,13 @@
 }
 
 - (void)nextImage {
-    for (UIView *subView in self.collectionView.subviews) {
-        if ([subView isKindOfClass:[UIImageView class]]) {
-            // 后续看看能不能做个过渡动画
-        }
-    }
     NSInteger page = self.collectionView.contentOffset.x / self.collectionView.bounds.size.width;
     NSInteger offsetX = self.collectionView.frame.size.width * (page + 1);
     [self.collectionView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    if (!(self.animationType == InfiniteLoopViewAnimationTypeNone)) {
+        [self.collectionView.layer addAnimation:self.animation forKey:@"animationKey"];
+    }
 }
-
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -237,11 +247,10 @@
     return infiniteLoopViewCell;
 }
 
-
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat scroll_W = scrollView.frame.size.width;
-    NSInteger page = (scrollView.contentOffset.x + scroll_W * 0.5) / scroll_W;
+    NSInteger page = (scrollView.contentOffset.x + scroll_W * .5) / scroll_W;
     [self.pageControl setCurrentPage:page % [self.imageUrls count]];
     [self.titleLabel setText:self.titles[[self.pageControl currentPage]]];
 }
@@ -262,7 +271,7 @@
     [self scrollViewDidStop:scrollView];
 }
 
--(void)scrollViewDidStop:(UIScrollView *)scrollView{
+- (void)scrollViewDidStop:(UIScrollView *)scrollView{
     NSInteger offset = scrollView.contentOffset.x / scrollView.bounds.size.width;
     if (offset == 0 || offset == ([self.collectionView numberOfItemsInSection:0] - 1)) {
         offset = [self.imageUrls count] - (offset == 0 ? 0 : 1);
@@ -319,9 +328,94 @@
     [self.coverView setHidden:hideCover];
 }
 
+- (void)setCoverColor:(UIColor *)coverColor {
+    _coverColor = coverColor;
+    [self.coverView setBackgroundColor:coverColor];
+}
+
+- (void)setAnimationType:(InfiniteLoopViewAnimationType)animationType {
+    _animationType = animationType;
+    switch (animationType) {
+        case InfiniteLoopViewAnimationTypeFade:
+            [self.animation setType:kCATransitionFade];
+            break;
+        case InfiniteLoopViewAnimationTypeMoveIn:
+            [self.animation setType:kCATransitionMoveIn];
+            break;
+        case InfiniteLoopViewAnimationTypePush:
+            [self.animation setType:kCATransitionPush];
+            break;
+        case InfiniteLoopViewAnimationTypeReveal:
+            [self.animation setType:kCATransitionReveal];
+            break;
+        case InfiniteLoopViewAnimationTypePageCurl:
+            [self.animation setType:@"pageCurl"];
+            break;
+        case InfiniteLoopViewAnimationTypePageUnCurl:
+            [self.animation setType:@"pageUnCurl"];
+            break;
+        case InfiniteLoopViewAnimationTypeOglFlip:
+            [self.animation setType:@"oglFlip"];
+            break;
+        case InfiniteLoopViewAnimationTypeCube:
+            [self.animation setType:@"cube"];
+            break;
+        case InfiniteLoopViewAnimationTypeSuckEffect:
+            [self.animation setType:@"suckEffect"];
+            break;
+        case InfiniteLoopViewAnimationTypeRippleEffect:
+            [self.animation setType:@"rippleEffect"];
+            break;
+        case InfiniteLoopViewAnimationTypeCameraIrisHollowOpen:
+            [self.animation setType:@"cameraIrisHollowOpen"];
+            break;
+        case InfiniteLoopViewAnimationTypeCameraIrisHollowClose:
+            [self.animation setType:@"cameraIrisHollowClose"];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setAnimationDirection:(InfiniteLoopViewAnimationDirection)animationDirection {
+    _animationDirection = animationDirection;
+    switch (animationDirection) {
+        case InfiniteLoopViewAnimationDirectionRight:
+            [self.animation setSubtype:kCATransitionFromRight];
+            break;
+        case InfiniteLoopViewAnimationDirectionLeft:
+            [self.animation setSubtype:kCATransitionFromLeft];
+            break;
+        case InfiniteLoopViewAnimationDirectionTop:
+            [self.animation setSubtype:kCATransitionFromTop];
+            break;
+        case InfiniteLoopViewAnimationDirectionBottom:
+            [self.animation setSubtype:kCATransitionFromBottom];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setAnimationDuration:(CFTimeInterval)animationDuration {
+    _animationDuration = animationDuration;
+    [self.animation setDuration:animationDuration];
+}
+
 #pragma mark -
+- (CATransition *)animation {
+    if (!_animation) {
+        _animation = [CATransition animation];
+        [_animation setDuration:self.animationDuration];
+        [_animation setFillMode:kCAFillModeForwards];
+        [_animation setTimingFunction:UIViewAnimationCurveEaseInOut];
+    }
+    return _animation;
+}
+
 - (void)dealloc {
     [self removeTimer];
 }
 
 @end
+

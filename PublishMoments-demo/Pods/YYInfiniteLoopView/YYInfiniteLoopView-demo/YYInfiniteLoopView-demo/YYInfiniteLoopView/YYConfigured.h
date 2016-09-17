@@ -2,7 +2,7 @@
 //  YYConfigured.h
 //  YYInfiniteLoopView-demo
 //
-//  Created by Arvin on 16/8/31.
+//  Created by Arvin on 16/9/2.
 //  Copyright © 2016年 Arvin. All rights reserved.
 //
 
@@ -11,11 +11,11 @@
 
 /// YYInfiniteLoopViewCell 重用标识符
 static NSString *const CellIdentifier = @"LayoutCellIdentifier";
-
-#define RGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0f \
+/// RGB颜色
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f \
                                            green:(g)/255.0f \
                                             blue:(b)/255.0f \
                                            alpha:(a)]
-#define RGBColor(r,g,b) RGBAColor(r, g, b, 1.0f)
+#define RGBCOLOR(r,g,b) RGBACOLOR(r, g, b, 1.0f)
 
 #endif /* YYConfigured_h */

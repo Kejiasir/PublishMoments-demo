@@ -120,7 +120,7 @@
 - (void)deleImage
 {
     //记录当前图片位置
-     NSURL *url = [self highQualityImageURLForIndex:_currentImageIndex];
+    //NSURL *url = [self highQualityImageURLForIndex:_currentImageIndex];
     int i = 0;
     for (UIView *view in self.sourceImagesContainerView.subviews) {
         if (view.tag == _currentImageIndex) {

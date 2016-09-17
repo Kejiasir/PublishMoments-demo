@@ -1,17 +1,21 @@
 PODS:
   - LaunchAnimation (0.2.0)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - YYInfiniteLoopView (0.2.0):
+    - SDWebImage (~> 3.8)
 
 DEPENDENCIES:
   - LaunchAnimation (~> 0.2.0)
   - SDWebImage (~> 3.8.1)
+  - YYInfiniteLoopView (~> 0.2.0)
 
 SPEC CHECKSUMS:
   LaunchAnimation: c2835e33cd6042350e4084a8d5ee1620a8ede61b
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  YYInfiniteLoopView: 2f9fe5ed4604cdeabeeb92bb5d1069fe8aace9ea
 
-PODFILE CHECKSUM: b693ff802cc634859d1065fffb3f15872a7a7aee
+PODFILE CHECKSUM: 40d4bdff737e7eb3fa37f643d7c66879cdf2c396
 
 COCOAPODS: 1.0.1

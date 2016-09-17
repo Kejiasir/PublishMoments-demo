@@ -1,0 +1,6 @@
+framework module YYInfiniteLoopView {
+  umbrella header "YYInfiniteLoopView-umbrella.h"
+
+  export *
+  module * { export * }
+}

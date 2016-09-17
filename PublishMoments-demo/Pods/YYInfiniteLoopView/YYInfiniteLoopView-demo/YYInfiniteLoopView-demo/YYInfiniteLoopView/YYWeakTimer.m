@@ -2,7 +2,7 @@
 //  YYWeakTimer.m
 //  YYInfiniteLoopView-demo
 //
-//  Created by Arvin on 16/8/31.
+//  Created by Arvin on 16/9/2.
 //  Copyright © 2016年 Arvin. All rights reserved.
 //
 
@@ -69,3 +69,4 @@
 }
 
 @end
+

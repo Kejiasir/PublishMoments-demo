@@ -39,7 +39,7 @@
     
     //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     UINavigationBar *navBar = [UINavigationBar appearance];
-    [navBar setBarTintColor:ColorFromRGBA(5, 5, 5, 0.1)];
+    [navBar setBarTintColor:[UIColor colorWithWhite:0 alpha:0.1]];
     //[navBar setTranslucent:YES];
     [navBar setTintColor:[UIColor whiteColor]];
     [navBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],

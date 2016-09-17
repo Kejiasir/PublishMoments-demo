@@ -54,8 +54,17 @@
                                     }];
     [loopView setPageIndicatorColor:[UIColor orangeColor]];
     [loopView setCurrentPageIndicatorColor:[UIColor magentaColor]];
+    [loopView setHideCover:YES];
+    [loopView setHideTitleLabel:YES];
+    [loopView setTimeInterval:5.0f];
+    [loopView setAnimationDuration:.5f];
+    [loopView setAnimationType:InfiniteLoopViewAnimationTypeReveal];
+    //[loopView setAnimationDirection:InfiniteLoopViewAnimationDirectionBottom];
     [loopView setFrame:CGRectMake(0, 0, self.view.w, self.view.h * 0.35)];
     [self.tableView setTableHeaderView:loopView];
+    
+    //UIButton *btn = [[UIButton alloc] init];
+    
 }
 
 - (void)didSelectedImageWithIndex:(NSInteger)index {

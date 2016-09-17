@@ -20,10 +20,6 @@
 		A20C68F11D4F36D800C1ADC0 /* Monaco.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A20C68F01D4F36D800C1ADC0 /* Monaco.ttf */; };
 		A20C68F41D4F3EF700C1ADC0 /* YYActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C68F31D4F3EF700C1ADC0 /* YYActionSheet.m */; };
 		A20C68F71D4F501000C1ADC0 /* YYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20C68F61D4F501000C1ADC0 /* YYNavigationController.m */; };
-		A25B5DFD1D7841AE00CDD7A2 /* YYInfiniteLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DF61D7841AE00CDD7A2 /* YYInfiniteLoopView.m */; };
-		A25B5DFE1D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DF81D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m */; };
-		A25B5DFF1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DFA1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m */; };
-		A25B5E001D7841AE00CDD7A2 /* YYWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5DFC1D7841AE00CDD7A2 /* YYWeakTimer.m */; };
 		A25B5E031D78457300CDD7A2 /* YYTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A25B5E021D78457300CDD7A2 /* YYTestViewController.m */; };
 		A26FD3081D5C7493004D12EF /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FD3021D5C7493004D12EF /* SDBrowserImageView.m */; };
 		A26FD3091D5C7493004D12EF /* SDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A26FD3041D5C7493004D12EF /* SDPhotoBrowser.m */; };
@@ -55,6 +51,8 @@
 		A29898851D5B43490027823B /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A29898701D5B43490027823B /* MLSelectPhotoPickerFooterCollectionReusableView.m */; };
 		A29898861D5B43490027823B /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A29898721D5B43490027823B /* MLSelectPhotoPickerGroupTableViewCell.m */; };
 		A29898871D5B43490027823B /* MLSelectPhoto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A29898731D5B43490027823B /* MLSelectPhoto.bundle */; };
+		A2C2E85B1D7FC54F00238F5D /* NSTimer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C2E85A1D7FC54F00238F5D /* NSTimer+Extension.m */; };
+		A2C2E85E1D7FD21000238F5D /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C2E85D1D7FD21000238F5D /* UIButton+Extension.m */; };
 		A2EDAF351D5C7F68008249EF /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26FD30C1D5C7884004D12EF /* SDWebImage.framework */; };
 		A2EDAF3C1D5C826D008249EF /* YYNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EDAF3B1D5C826D008249EF /* YYNotification.m */; };
 		E11EA5AAF6DA3EE1F9A7DEED /* Pods_PublishMoments_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69CFEEE391719702C736F85B /* Pods_PublishMoments_demoUITests.framework */; };
@@ -113,15 +111,6 @@
 		A20C68F31D4F3EF700C1ADC0 /* YYActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYActionSheet.m; sourceTree = "<group>"; };
 		A20C68F51D4F501000C1ADC0 /* YYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYNavigationController.h; sourceTree = "<group>"; };
 		A20C68F61D4F501000C1ADC0 /* YYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYNavigationController.m; sourceTree = "<group>"; };
-		A25B5DF41D7841AE00CDD7A2 /* YYConfigured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYConfigured.h; sourceTree = "<group>"; };
-		A25B5DF51D7841AE00CDD7A2 /* YYInfiniteLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYInfiniteLoopView.h; sourceTree = "<group>"; };
-		A25B5DF61D7841AE00CDD7A2 /* YYInfiniteLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYInfiniteLoopView.m; sourceTree = "<group>"; };
-		A25B5DF71D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYInfiniteLoopViewCell.h; sourceTree = "<group>"; };
-		A25B5DF81D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYInfiniteLoopViewCell.m; sourceTree = "<group>"; };
-		A25B5DF91D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYInfiniteLoopViewLayout.h; sourceTree = "<group>"; };
-		A25B5DFA1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYInfiniteLoopViewLayout.m; sourceTree = "<group>"; };
-		A25B5DFB1D7841AE00CDD7A2 /* YYWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakTimer.h; sourceTree = "<group>"; };
-		A25B5DFC1D7841AE00CDD7A2 /* YYWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakTimer.m; sourceTree = "<group>"; };
 		A25B5E011D78457300CDD7A2 /* YYTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTestViewController.h; sourceTree = "<group>"; };
 		A25B5E021D78457300CDD7A2 /* YYTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTestViewController.m; sourceTree = "<group>"; };
 		A26FD3011D5C7493004D12EF /* SDBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDBrowserImageView.h; sourceTree = "<group>"; };
@@ -186,6 +175,10 @@
 		A29898711D5B43490027823B /* MLSelectPhotoPickerGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLSelectPhotoPickerGroupTableViewCell.h; sourceTree = "<group>"; };
 		A29898721D5B43490027823B /* MLSelectPhotoPickerGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLSelectPhotoPickerGroupTableViewCell.m; sourceTree = "<group>"; };
 		A29898731D5B43490027823B /* MLSelectPhoto.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MLSelectPhoto.bundle; sourceTree = "<group>"; };
+		A2C2E8591D7FC54F00238F5D /* NSTimer+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Extension.h"; sourceTree = "<group>"; };
+		A2C2E85A1D7FC54F00238F5D /* NSTimer+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Extension.m"; sourceTree = "<group>"; };
+		A2C2E85C1D7FD21000238F5D /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
+		A2C2E85D1D7FD21000238F5D /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		A2EDAF361D5C7FB4008249EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A2EDAF381D5C7FC1008249EF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A2EDAF3A1D5C826D008249EF /* YYNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYNotification.h; sourceTree = "<group>"; };
@@ -326,7 +319,6 @@
 			children = (
 				A29898451D5B43490027823B /* MLSelectPhoto */,
 				A26FD3001D5C7493004D12EF /* SDPhotoBowser */,
-				A25B5DF31D7841AE00CDD7A2 /* YYInfiniteLoopView */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -374,24 +366,12 @@
 				A29898431D5B2D090027823B /* UIImage+Extension.m */,
 				A20C68ED1D4F340B00C1ADC0 /* UIBarButtonItem+Extension.h */,
 				A20C68EE1D4F340B00C1ADC0 /* UIBarButtonItem+Extension.m */,
+				A2C2E8591D7FC54F00238F5D /* NSTimer+Extension.h */,
+				A2C2E85A1D7FC54F00238F5D /* NSTimer+Extension.m */,
+				A2C2E85C1D7FD21000238F5D /* UIButton+Extension.h */,
+				A2C2E85D1D7FD21000238F5D /* UIButton+Extension.m */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		A25B5DF31D7841AE00CDD7A2 /* YYInfiniteLoopView */ = {
-			isa = PBXGroup;
-			children = (
-				A25B5DF41D7841AE00CDD7A2 /* YYConfigured.h */,
-				A25B5DFB1D7841AE00CDD7A2 /* YYWeakTimer.h */,
-				A25B5DFC1D7841AE00CDD7A2 /* YYWeakTimer.m */,
-				A25B5DF51D7841AE00CDD7A2 /* YYInfiniteLoopView.h */,
-				A25B5DF61D7841AE00CDD7A2 /* YYInfiniteLoopView.m */,
-				A25B5DF71D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.h */,
-				A25B5DF81D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m */,
-				A25B5DF91D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.h */,
-				A25B5DFA1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m */,
-			);
-			path = YYInfiniteLoopView;
 			sourceTree = "<group>";
 		};
 		A26FD3001D5C7493004D12EF /* SDPhotoBowser */ = {
@@ -806,8 +786,8 @@
 			files = (
 				A27C92221D53306400EE8A5B /* YYEditViewController.m in Sources */,
 				A27C92291D53373000EE8A5B /* YYPhotosView.m in Sources */,
+				A2C2E85B1D7FC54F00238F5D /* NSTimer+Extension.m in Sources */,
 				A20C68EF1D4F340B00C1ADC0 /* UIBarButtonItem+Extension.m in Sources */,
-				A25B5E001D7841AE00CDD7A2 /* YYWeakTimer.m in Sources */,
 				A27C922C1D547B8700EE8A5B /* YYBottomView.m in Sources */,
 				A2EDAF3C1D5C826D008249EF /* YYNotification.m in Sources */,
 				A25B5E031D78457300CDD7A2 /* YYTestViewController.m in Sources */,
@@ -835,15 +815,13 @@
 				A26FD30A1D5C7493004D12EF /* SDWaitingView.m in Sources */,
 				A27C92231D53306400EE8A5B /* YYRootViewController.m in Sources */,
 				A27C92261D53355D00EE8A5B /* YYTextView.m in Sources */,
-				A25B5DFF1D7841AE00CDD7A2 /* YYInfiniteLoopViewLayout.m in Sources */,
-				A25B5DFD1D7841AE00CDD7A2 /* YYInfiniteLoopView.m in Sources */,
 				A20C68E61D4F2CD400C1ADC0 /* UIView+Extension.m in Sources */,
 				A29898771D5B43490027823B /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
 				A29898801D5B43490027823B /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				A298987F1D5B43490027823B /* MLPhotoPickerImageView.m in Sources */,
 				A298987B1D5B43490027823B /* MLSelectPhotoNavigationViewController.m in Sources */,
 				A26FD3091D5C7493004D12EF /* SDPhotoBrowser.m in Sources */,
-				A25B5DFE1D7841AE00CDD7A2 /* YYInfiniteLoopViewCell.m in Sources */,
+				A2C2E85E1D7FD21000238F5D /* UIButton+Extension.m in Sources */,
 				A20C68931D4F07D600C1ADC0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -968,7 +946,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				GCC_PREFIX_HEADER = "/Users/arvin/Desktop/文档资料/IOS资料/我的Demo/PublishMoments-demo/PublishMoments-demo/PublishMoments-demo/PublishMoments-demo.pch";
+				GCC_PREFIX_HEADER = "PublishMoments-demo/PublishMoments-demo.pch";
 				INFOPLIST_FILE = "PublishMoments-demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -984,7 +962,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				GCC_PREFIX_HEADER = "/Users/arvin/Desktop/文档资料/IOS资料/我的Demo/PublishMoments-demo/PublishMoments-demo/PublishMoments-demo/PublishMoments-demo.pch";
+				GCC_PREFIX_HEADER = "PublishMoments-demo/PublishMoments-demo.pch";
 				INFOPLIST_FILE = "PublishMoments-demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
